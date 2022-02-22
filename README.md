@@ -4,7 +4,7 @@ Web-application CMC MSU
 =============
 База данных
 -------------
-![library_system](https://user-images.githubusercontent.com/75036757/153721081-88a7fe84-4b3a-4380-b905-2f3a7f4338c1.png)
+![library_system(1)](https://user-images.githubusercontent.com/75036757/155182187-a9d7af4e-aa6a-4f71-82d8-c7852204cd29.png)
 
 # Опсиание страниц
 -------------
