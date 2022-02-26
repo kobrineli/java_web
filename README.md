@@ -1,7 +1,7 @@
 =============
 База данных
 -------------
-![library_system](https://user-images.githubusercontent.com/75036757/153721081-88a7fe84-4b3a-4380-b905-2f3a7f4338c1.png)
+![library_system(2)](https://user-images.githubusercontent.com/75036757/155182424-1089efb9-e4b3-472e-9a11-80cf862eaa96.png)
 
 # Описание страниц
 --------------
