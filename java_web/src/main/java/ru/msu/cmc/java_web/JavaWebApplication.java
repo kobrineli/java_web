@@ -1,4 +1,4 @@
-package java_web;
+package ru.msu.cmc.java_web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

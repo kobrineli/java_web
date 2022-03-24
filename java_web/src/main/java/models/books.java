@@ -2,6 +2,7 @@ package models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "books")
@@ -22,7 +23,7 @@ public class books {
     private String book_name;
 
     @Column(name = "authors")
-    private String[] authors;
+    private String authors;
 
     @Column(nullable = false, name = "publisher")
     @NonNull

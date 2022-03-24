@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="JavaWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="java_web.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="ru.msu.cmc.java_web.JavaWebApplication" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
