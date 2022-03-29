@@ -1,4 +1,4 @@
-package models;
+package ru.msu.cmc.java_web.models;
 
 import lombok.*;
 
@@ -15,6 +15,7 @@ import java.time.LocalDate;
 public class reader_story {
 
     @Id
+    @Column(nullable = false, name = "id")
     private long id;
 
     @ManyToOne(fetch = FetchType.EAGER)

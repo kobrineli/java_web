@@ -1,4 +1,4 @@
-package models;
+package ru.msu.cmc.java_web.models;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,7 +14,6 @@ import java.util.List;
 public class books {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, name = "book_id")
     private long book_id;
 

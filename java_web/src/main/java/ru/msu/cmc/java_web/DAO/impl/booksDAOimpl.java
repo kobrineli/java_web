@@ -1,10 +1,10 @@
-package DAO.impl;
+package ru.msu.cmc.java_web.DAO.impl;
 
-import DAO.booksDAO;
-import models.books;
+import ru.msu.cmc.java_web.DAO.booksDAO;
+import ru.msu.cmc.java_web.models.books;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import utils.HibernateUtil;
+import ru.msu.cmc.java_web.utils.HibernateUtil;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class booksDAOimpl implements booksDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Query<books> query = session.createQuery("FROM books WHERE book_id = :id", books.class)
                 .setParameter("id", id);
-        return query.getResultList().size() == 0 ? null : (books) query.getResultList();
+        return query.getResultList().size() == 0 ? null : query.getResultList().get(0);
     }
 
     @Override

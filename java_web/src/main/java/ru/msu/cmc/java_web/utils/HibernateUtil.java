@@ -1,8 +1,8 @@
-package utils;
+package ru.msu.cmc.java_web.utils;
 
-import models.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import ru.msu.cmc.java_web.models.*;
 
 public class HibernateUtil {
     private static final SessionFactory sessionFactory;

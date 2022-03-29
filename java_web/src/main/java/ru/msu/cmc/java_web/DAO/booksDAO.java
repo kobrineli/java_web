@@ -1,6 +1,6 @@
-package DAO;
+package ru.msu.cmc.java_web.DAO;
 
-import models.books;
+import ru.msu.cmc.java_web.models.books;
 
 import java.util.List;
 

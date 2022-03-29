@@ -8,15 +8,14 @@
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.url">jdbc:postgresql://localhost/library</property>
         <property name="connection.username">kobrineli</property>
-        <property name="connection.password"/>
+        <property name="connection.password">1234</property>
         <property name="show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <mapping class="models.admin"/>
-        <mapping class="models.book_copies"/>
-        <mapping class="models.books"/>
-        <mapping class="models.reader_story"/>
-        <mapping class="models.readers"/>
-
-
+        <mapping class="ru.msu.cmc.java_web.models.admin"/>
+        <mapping class="ru.msu.cmc.java_web.models.book_copies"/>
+        <mapping class="ru.msu.cmc.java_web.models.books"/>
+        <mapping class="ru.msu.cmc.java_web.models.reader_story"/>
+        <mapping class="ru.msu.cmc.java_web.models.readers"/>
     </session-factory>
 </hibernate-configuration>

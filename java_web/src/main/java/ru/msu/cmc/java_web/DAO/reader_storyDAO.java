@@ -1,7 +1,8 @@
-package DAO;
+package ru.msu.cmc.java_web.DAO;
 
-import models.reader_story;
-import models.readers;
+import ru.msu.cmc.java_web.models.books;
+import ru.msu.cmc.java_web.models.reader_story;
+import ru.msu.cmc.java_web.models.readers;
 
 import java.util.List;
 
@@ -10,6 +11,6 @@ public interface reader_storyDAO {
     void update_reader_story(reader_story record);
     void delete_reader_story(reader_story record);
 
-    List<reader_story> get_reader_story_by_reader(readers reader);
     List<reader_story> get_all_reader_story();
+    reader_story get_story_by_id(Long id);
 }

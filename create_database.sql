@@ -5,7 +5,7 @@ CREATE DATABASE library;
 \connect library
 
 CREATE TABLE readers (
-    library_card_number SERIAL PRIMARY KEY,
+    library_card_number integer PRIMARY KEY,
     surname text NOT NULL,
     name text NOT NULL,
     patronymic text,
@@ -15,7 +15,7 @@ CREATE TABLE readers (
 );
 
 CREATE TABLE books (
-    book_id SERIAL PRIMARY KEY,
+    book_id integer PRIMARY KEY,
     book_name text NOT NULL,
     authors text,
     publisher text NOT NULL,
@@ -26,12 +26,13 @@ CREATE TABLE books (
 );
 
 CREATE TABLE book_copies (
-    copy_id SERIAL PRIMARY KEY,
+    copy_id integer PRIMARY KEY,
     book_id integer REFERENCES books ON DELETE CASCADE,
     copy_number integer
 );
 
 CREATE TABLE reader_story (
+    id integer PRIMARY KEY,
     reader_id integer REFERENCES readers ON DELETE CASCADE,
     copy_id integer REFERENCES book_copies ON DELETE CASCADE,
     issue_date date,
@@ -39,7 +40,7 @@ CREATE TABLE reader_story (
 );
 
 CREATE TABLE admin (
-    admin_id SERIAL PRIMARY KEY,
+    admin_id integer PRIMARY KEY,
     admin_login text UNIQUE NOT NULL,
     admin_password text
 );
@@ -57,10 +58,10 @@ INSERT INTO books (book_id, book_name, authors, publisher, publish_year, isbn, t
 INSERT INTO book_copies (copy_id, book_id, copy_number) VALUES
 (1, 1, 1), (2, 2, 1), (3, 3, 1);
 
-INSERT INTO reader_story (reader_id, copy_id, issue_date, return_date) VALUES
-(1, 1, '2022-02-13', '2022-03-1'),
-(2, 2, '2022-02-25', '2022-03-7'),
-(3, 3, '2022-03-3', NULL);
+INSERT INTO reader_story (id, reader_id, copy_id, issue_date, return_date) VALUES
+(1, 1, 1, '2022-02-13', '2022-03-1'),
+(2, 2, 2, '2022-02-25', '2022-03-7'),
+(3, 3, 3, '2022-03-3', NULL);
 
 INSERT INTO admin (admin_id, admin_login, admin_password) VALUES
 (1, 'admin1', 'admin1'),

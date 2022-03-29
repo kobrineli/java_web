@@ -1,4 +1,4 @@
-package models;
+package ru.msu.cmc.java_web.models;
 
 import lombok.*;
 
@@ -14,7 +14,6 @@ import javax.persistence.*;
 public class readers {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, name = "library_card_number")
     private long library_card_number;
 
