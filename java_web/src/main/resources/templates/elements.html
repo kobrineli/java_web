@@ -1,0 +1,166 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+
+<!--page header-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="unreg-page-header">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="unreg_navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" id="unregRootLink" href="/">Главня страница</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="registrateLink" th:href="@{sign_up}">Зарегистрироваться</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="signInLink" th:href="@{log_in}">Войти</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--end of page header-->
+
+<!--page header-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="reg-page-header">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="reg_navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" id="regRootLink" th:href="@{reg_main}">Главня страница</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profileLink" th:href="@{profile}">Профиль</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="historyLink" th:href="@{history}">История</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="logOutLink" th:href="@{log_out}">Выйти</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--end of page header-->
+
+<!--page header-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="admin-page-header">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="admin_navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" id="adminRootLink" th:href="@{admin_main}">Главня страница</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="ordersLink" th:href="@{orders}">Бронирования</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="readersLink" th:href="@{readers}">Читатели</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="addBookLink" th:href="@{add_book}">Добавить книгу</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="addReaderLink" th:href="@{add_reader}">Добавить читателя</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="adminLogOutLink" th:href="@{log_out}">Выйти</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--end of page header-->
+
+<div th:fragment="site-footer" class="fixed-bottom indent">
+    <p>
+        Система библиотечного учета
+        <br>
+        Кобрин Илай, 2022
+        <br>
+    </p>
+</div>
+
+<div th:fragment="book-list" class="indent">
+    <input type="text" id="name_filter" name="name_filter" placeholder="Название" size="15">
+    <input type="text" id="authors_filter" name="authors_filter" placeholder="Авторы" size="15">
+    <input type="text" id="total_filter" name="total_filter" placeholder="Кол-во экземпляров" size="15">
+    <input type="text" id="curr_filter" name="curr_filter" placeholder="Кол-во свободных" size="15">
+    <input type="text" id="publisher_filter" name="publisher_filter" placeholder="Издание" size="15">
+    <input type="text" id="year_filter" name="year_filter" placeholder="Год издания" size="15">
+    <br><br>
+    <table class="table table-bordered table-warning">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"> Название книги</th>
+            <th scope="col"> Авторы</th>
+            <th scope="col"> Кол-во экземпляров</th>
+            <th scope="col"> Кол-во свободных экземпляров</th>
+            <th scope="col"> Издательство</th>
+            <th scope="col"> Год издания</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${books.isEmpty()}">
+            <td colspan="6"> В базе пока нет книг.</td>
+        </tr>
+        <tr th:each="book : ${books}">
+            <td>
+                <a th:href="'/book?bookId=' + ${book.getBook_id()}">
+                    <span th:text="${book.getBook_name()}"> </span>
+                </a>
+            </td>
+            <td>
+                <span th:text="${book.getAuthors()}"> </span>
+            </td>
+            <td>
+                <span th:text="${book.getTotal_amount()}"> </span>
+            </td>
+            <td>
+                <span th:text="${book.getCurrent_count()}"> </span>
+            </td>
+            <td>
+                <span th:text="${book.getPublisher()}"> </span>
+            </td>
+            <td>
+                <span th:text="${book.getPublish_year()}"> </span>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<!--for bootstrap-->
+<div th:fragment="site-script">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</div>
+<!--end for bootstrap-->

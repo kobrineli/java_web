@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Главная страница</title>
+    <title>Войти</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -14,20 +14,21 @@
     </style>
 </head>
 <body>
-
-<div th:replace="elements :: unreg-page-header"></div>
-
+<div th:replace="elements :: unreg-page-header"> </div>
 
 <div class="indent">
-    <h3 class="text-center">Система библиотечного учета</h3>
-    <br>
-    <span class="text-center indent"> Сайт позволяет добавлять книги, бронировать их и просматривать историю читателя </span>
-    <br>
+    <form method="post" action="/log_in">
+        <label for="login">Логин:</label><br>
+        <input type="text" id="login" name="login"><br><br>
 
-    <div th:replace="elements :: book-list"></div>
-    <div th:replace="elements :: site-footer"></div>
+        <label for="password">Пароль:</label><br>
+        <input type="text" id="password" name="password"><br><br>
+
+        <input id="submitButton" type="submit" value="Войти" class="btn btn-primary">
+    </form>
 </div>
 
+<div th:replace="elements :: site-footer"></div>
 <div th:replace="elements :: site-script"></div>
 
 </body>
