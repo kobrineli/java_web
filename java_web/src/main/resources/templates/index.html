@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="unregMainPage :: page-header"></div>
+
+<div class="indent">
+    <h3 class="text-center">Электронная система библиотечного учета</h3>
+    <br>
+    <span class="text-center indent"> Сайт позволяет получать список книг библиотеки, броинровать их и смотреть читательскую историю </span>
+    <br>
+
+    <div th:replace="unregMainPage :: site-footer"></div>
+</div>
+
+<div th:replace="unregMainPage :: site-script"></div>
+
+</body>
+</html>
