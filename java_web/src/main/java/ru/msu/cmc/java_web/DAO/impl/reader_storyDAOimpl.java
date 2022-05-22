@@ -53,4 +53,12 @@ public class reader_storyDAOimpl implements reader_storyDAO {
                 .setParameter("id", id);
         return query.getResultList().size() == 0 ? null : query.getResultList().get(0);
     }
+
+    @Override
+    public List<reader_story> get_story_by_reader_id(Long id) {
+        Session session  = HibernateUtil.getSessionFactory().openSession();
+        Query<reader_story> query = session.createQuery("FROM reader_story WHERE reader_id.id = :id", reader_story.class)
+                .setParameter("id", id);
+        return query.getResultList().size() == 0 ? null : query.getResultList();
+    }
 }

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Зарегистрироваться</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="elements :: reg-page-header"> </div>
+
+<div class="indent" id="profileInfo">
+    <table class="table table-bordered table-warning">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <span>Логин</span>
+            </td>
+            <td>
+                <span th:text="${login}"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Фамилия</span>
+            </td>
+            <td>
+                <span th:text="${surname}"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Имя</span>
+            </td>
+            <td>
+                <span th:text="${name}"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Отчество</span>
+            </td>
+            <td>
+                <span th:text="${patr}"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Адрес</span>
+            </td>
+            <td>
+                <span th:text="${address}"> </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="elements :: site-footer"></div>
+<div th:replace="elements :: site-script"></div>
+
+</body>
+</html>

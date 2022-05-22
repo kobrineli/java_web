@@ -17,12 +17,12 @@
 <div th:replace="elements :: unreg-page-header"> </div>
 
 <div class="indent">
-    <form method="post" action="/log_in">
+    <form action="/submit_log_in">
         <label for="login">Логин:</label><br>
-        <input type="text" id="login" name="login"><br><br>
+        <input type="text" id="login" name="login" required><br><br>
 
         <label for="password">Пароль:</label><br>
-        <input type="text" id="password" name="password"><br><br>
+        <input type="text" id="password" name="password" required><br><br>
 
         <input id="submitButton" type="submit" value="Войти" class="btn btn-primary">
     </form>

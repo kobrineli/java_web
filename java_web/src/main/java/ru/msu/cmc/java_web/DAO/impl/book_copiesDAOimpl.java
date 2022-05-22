@@ -51,4 +51,12 @@ public class book_copiesDAOimpl implements book_copiesDAO {
         Query<book_copies> query = session.createQuery("FROM book_copies ", book_copies.class);
         return query.getResultList().size() == 0 ? null : query.getResultList();
     }
+
+    @Override
+    public List<book_copies> get_copy_by_book_id(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<book_copies> query = session.createQuery("FROM book_copies WHERE book_id.book_id = :id", book_copies.class)
+                .setParameter("id", id);
+        return query.getResultList().size() == 0 ? null : query.getResultList();
+    }
 }

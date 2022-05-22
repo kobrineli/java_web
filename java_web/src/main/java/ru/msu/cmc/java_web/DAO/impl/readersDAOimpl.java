@@ -51,4 +51,12 @@ public class readersDAOimpl implements readersDAO {
         Query<readers> query = session.createQuery("FROM readers ", readers.class);
         return query.getResultList().size() == 0 ? null : query.getResultList();
     }
+
+    @Override
+    public readers get_reader_by_login(String login) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<readers> query = session.createQuery("FROM readers WHERE reader_login = :login", readers.class)
+                .setParameter("login", login);
+        return query.getResultList().size() == 0 ? null : query.getResultList().get(0);
+    }
 }

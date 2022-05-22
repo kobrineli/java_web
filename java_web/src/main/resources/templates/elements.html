@@ -45,7 +45,7 @@
     <div class="collapse navbar-collapse" id="reg_navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" id="regRootLink" th:href="@{reg_main}">Главня страница</a>
+                <a class="nav-link" id="regRootLink" th:href="@{reg-main}">Главня страница</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="profileLink" th:href="@{profile}">Профиль</a>
@@ -70,19 +70,22 @@
     <div class="collapse navbar-collapse" id="admin_navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" id="adminRootLink" th:href="@{admin_main}">Главня страница</a>
+                <a class="nav-link" id="adminRootLink" th:href="@{admin-main}">Главня страница</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link" id="ordersLink" th:href="@{orders}">Бронирования</a>
-            </li>
+            </li>-->
             <li class="nav-item">
                 <a class="nav-link" id="readersLink" th:href="@{readers}">Читатели</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="addBookLink" th:href="@{add_book}">Добавить книгу</a>
+                <a class="nav-link" id="addBookLink" th:href="@{add-book}">Добавить книгу</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="addReaderLink" th:href="@{add_reader}">Добавить читателя</a>
+                <a class="nav-link" id="addReaderLink" th:href="@{add-reader}">Добавить читателя</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="addRecordLink" th:href="@{add-record}">Добавить запись</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="adminLogOutLink" th:href="@{log_out}">Выйти</a>
@@ -102,20 +105,24 @@
 </div>
 
 <div th:fragment="book-list" class="indent">
-    <input type="text" id="name_filter" name="name_filter" placeholder="Название" size="15">
-    <input type="text" id="authors_filter" name="authors_filter" placeholder="Авторы" size="15">
-    <input type="text" id="total_filter" name="total_filter" placeholder="Кол-во экземпляров" size="15">
-    <input type="text" id="curr_filter" name="curr_filter" placeholder="Кол-во свободных" size="15">
-    <input type="text" id="publisher_filter" name="publisher_filter" placeholder="Издание" size="15">
-    <input type="text" id="year_filter" name="year_filter" placeholder="Год издания" size="15">
-    <br><br>
+    <form method="get" action="/submit_filter">
+        <select name="filter">
+            <option value="">Фильтр</option>
+            <option value="1">Название</option>
+            <option value="2">Авторы</option>
+            <option value="3">Кол-во экземпляров</option>
+            <option value="4">Издание</option>
+            <option value="5">Год издания</option>
+        </select>
+        <input type="text" id="input_filter" name="input_filter" style="text-align:right;" size="12">
+        <button type="submit" id="submit_filter">Применить</button>
+    </form><br>
     <table class="table table-bordered table-warning">
         <thead class="thead-dark">
         <tr>
             <th scope="col"> Название книги</th>
             <th scope="col"> Авторы</th>
             <th scope="col"> Кол-во экземпляров</th>
-            <th scope="col"> Кол-во свободных экземпляров</th>
             <th scope="col"> Издательство</th>
             <th scope="col"> Год издания</th>
         </tr>
@@ -137,13 +144,67 @@
                 <span th:text="${book.getTotal_amount()}"> </span>
             </td>
             <td>
-                <span th:text="${book.getCurrent_count()}"> </span>
+                <span th:text="${book.getPublisher()}"> </span>
+            </td>
+            <td>
+                <span th:text="${book.getPublish_year()}"> </span>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div th:fragment="admin-book-list" class="indent">
+    <form method="get" action="/submit_filter">
+        <select name="filter">
+            <option value="">Фильтр</option>
+            <option value="1">Название</option>
+            <option value="2">Авторы</option>
+            <option value="3">Кол-во экземпляров</option>
+            <option value="4">Издание</option>
+            <option value="5">Год издания</option>
+        </select>
+        <input type="text" id="input_filter" name="input_filter" style="text-align:right;" size="12">
+        <button type="submit" id="submit_filter">Применить</button>
+    </form><br>
+    <table class="table table-bordered table-warning">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"> Название книги</th>
+            <th scope="col"> Авторы</th>
+            <th scope="col"> Кол-во экземпляров</th>
+            <th scope="col"> Издательство</th>
+            <th scope="col"> Год издания</th>
+            <th scope="col"/>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${books.isEmpty()}">
+            <td colspan="6"> В базе пока нет книг.</td>
+        </tr>
+        <tr th:each="book : ${books}">
+            <td>
+                <a th:href="'/book?bookId=' + ${book.getBook_id()}">
+                    <span th:text="${book.getBook_name()}"> </span>
+                </a>
+            </td>
+            <td>
+                <span th:text="${book.getAuthors()}"> </span>
+            </td>
+            <td>
+                <span th:text="${book.getTotal_amount()}"> </span>
             </td>
             <td>
                 <span th:text="${book.getPublisher()}"> </span>
             </td>
             <td>
                 <span th:text="${book.getPublish_year()}"> </span>
+            </td>
+            <td>
+                <a th:href="'/remove_book?bookId=' + ${book.getBook_id()}">
+                    <span> Удалить</span>
+                </a>
             </td>
         </tr>
 

@@ -12,4 +12,5 @@ public interface book_copiesDAO {
 
     book_copies get_copy_by_id(Long id);
     List<book_copies> get_all_copies();
+    List<book_copies> get_copy_by_book_id(Long id);
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Зарегистрироваться</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="elements :: admin-page-header"> </div>
+
+<div class="indent">
+    <form method="post" action="/submit_add_book">
+        <label for="name">Название:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="authors">Авторы:</label><br>
+        <input type="text" id="authors" name="authors"><br><br>
+
+        <label for="publisher">Издание:</label><br>
+        <input type="text" id="publisher" name="publisher"><br><br>
+
+        <label for="year">Год издания:</label><br>
+        <input type="text" id="year" name="year"><br><br>
+
+        <label for="isbn">ISBN:</label><br>
+        <input type="text" id="isbn" name="isbn"><br><br>
+
+        <label for="total">Кол-во экземпляров:</label><br>
+        <input type="text" id="total" name="total"><br><br>
+
+        <input id="submitButton" type="submit" value="Добавить" class="btn btn-primary">
+    </form>
+</div>
+
+<div th:replace="elements :: site-footer"></div>
+<div th:replace="elements :: site-script"></div>
+
+</body>
+</html>

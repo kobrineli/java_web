@@ -11,4 +11,5 @@ public interface readersDAO {
 
     readers get_reader_by_id(Long id);
     List<readers> get_all_readers();
+    readers get_reader_by_login(String login);
 }

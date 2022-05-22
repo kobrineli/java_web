@@ -14,10 +14,10 @@
     </style>
 </head>
 <body>
-<div th:replace="elements :: unreg-page-header"> </div>
+<div th:replace="elements :: admin-page-header"> </div>
 
 <div class="indent">
-    <form method="post" action="/submit_sign_up">
+    <form method="post" action="/submit_add_reader">
         <label for="login">Логин:</label><br>
         <input type="text" id="login" name="login"><br><br>
 
@@ -36,7 +36,7 @@
         <label for="password">Пароль:</label><br>
         <input type="text" id="password" name="password"><br><br>
 
-        <input id="submitButton" type="submit" value="Зарегистрироваться" class="btn btn-primary">
+        <input id="submitButton" type="submit" value="Добавить" class="btn btn-primary">
     </form>
 </div>
 

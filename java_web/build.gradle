@@ -25,6 +25,7 @@ dependencies {
 	implementation 'org.postgresql:postgresql:42.3.3'
 	implementation 'org.thymeleaf:thymeleaf:3.1.0.M1'
 	implementation 'org.thymeleaf:thymeleaf-spring5:3.1.0.M1'
+	implementation 'org.seleniumhq.selenium:selenium-java'
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'

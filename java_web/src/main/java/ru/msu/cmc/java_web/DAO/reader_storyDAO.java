@@ -13,4 +13,5 @@ public interface reader_storyDAO {
 
     List<reader_story> get_all_reader_story();
     reader_story get_story_by_id(Long id);
+    List<reader_story> get_story_by_reader_id(Long id);
 }

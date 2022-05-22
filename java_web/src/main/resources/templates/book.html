@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Зарегистрироваться</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="elements :: reg-page-header"> </div>
+
+<div class="indent">
+    <table class="table table-bordered table-warning">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <span>Название</span>
+            </td>
+            <td>
+                <span th:text="${name}"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Авторы</span>
+            </td>
+            <td>
+                <span th:text="${authors}"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Издание</span>
+            </td>
+            <td>
+                <span th:text="${publisher}"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Год издания</span>
+            </td>
+            <td>
+                <span th:text="${year}"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>ISBN</span>
+            </td>
+            <td>
+                <span th:text="${isbn}"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Всего экземпляров</span>
+            </td>
+            <td>
+                <span th:text="${total}"> </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>Свободных экземлпляров</span>
+            </td>
+            <td>
+                <span th:text="${curr}"> </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="elements :: site-footer"></div>
+<div th:replace="elements :: site-script"></div>
+
+</body>
+</html>

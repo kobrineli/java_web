@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Зарегистрироваться</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .indent {
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="elements :: admin-page-header"> </div>
+
+<div class="indent">
+<table class="table table-bordered table-warning">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col"> Номер читательского билета</th>
+        <th scope="col"> Фамилия</th>
+        <th scope="col"> Имя</th>
+        <th scope="col"> Отчество</th>
+        <th scope="col"> Адрес</th>
+        <th scope="col"> Логин</th>
+        <th scope="col"/>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reader : ${readers}">
+        <td>
+            <span th:text="${reader.getLibrary_card_number()}"> </span>
+        </td>
+        <td>
+            <span th:text="${reader.getSurname()}"> </span>
+        </td>
+        <td>
+            <span th:text="${reader.getName()}"> </span>
+        </td>
+        <td>
+            <span th:text="${reader.getPatronymic()}"> </span>
+        </td>
+        <td>
+            <span th:text="${reader.getAddress()}"> </span>
+        </td>
+        <td>
+            <span th:text="${reader.getReader_login()}"> </span>
+        </td>
+        <td>
+            <a th:id="${reader.getLibrary_card_number()}" th:href="'/remove_reader?readerId=' + ${reader.getLibrary_card_number}">
+                <span>Удалить</span>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<div th:replace="elements :: site-footer"></div>
+<div th:replace="elements :: site-script"></div>
+
+</body>
+</html>
